@@ -267,6 +267,14 @@
             font-size: 0.7rem;
             overflow-x: auto;
         }
+        .security-warning {
+            background: rgba(220, 53, 69, 0.15);
+            border-left: 4px solid #dc3545;
+            padding: 1rem;
+            margin-top: 1rem;
+            border-radius: 0.8rem;
+            font-size: 0.75rem;
+        }
         @media (max-width: 700px) {
             body { padding: 1rem; }
             .card { padding: 1rem; }
@@ -276,7 +284,8 @@
         ::-webkit-scrollbar-track { background: #141c2c; }
         ::-webkit-scrollbar-thumb { background: #4f9eff; border-radius: 10px; }
     </style>
-</head><link rel="manifest" href="/manifest.json">
+</head>
+<link rel="manifest" href="/manifest.json">
 <body>
 <div class="container">
     <div class="app-header">
@@ -358,7 +367,7 @@
             <div class="info-row"><span class="info-label">ORCID</span><span class="info-value">0009-0009-7893-9070</span></div>
             <div class="info-row"><span class="info-label">زبان‌ها</span><span class="info-value">فارسی (مادری)، انگلیسی (مسلط)</span></div>
             <div class="info-row"><span class="info-label">بنیان‌گذار</span><span class="info-value">Beaconchain.com (۲۰۱۷–اکنون)</span></div>
-            <div class="info-row"><span class="info-label">رئیس BSC</span><span class="info-value">Binance Smart Chain (۲۰۲۱–اکنون)</span></div>
+            <!-- حذف شد: رئیس BSC و Binance Smart Chain -->
             <div class="info-row"><span class="info-label">مسئول تطابق GDPR</span><span class="info-value">یورو (۲۰۲۰–اکنون)</span></div>
         </div>
         <div class="card">
@@ -373,9 +382,13 @@
         </div>
         <div class="card">
             <h3><i class="fas fa-key"></i> API و نظارت</h3>
-            <div class="info-row"><span class="info-label">کلید API (پنهان)</span><span class="info-value">•••••••••••••••••LS1o5</span></div>
-            <div class="info-row"><span class="info-label">ماشین</span><span class="info-value">خوشه BSC</span></div>
-            <div class="endpoint"><span class="info-label">نقطه پایانی معیارها</span><br><code>https://beaconcha.in/api/v1/client/metrics?apikey=[REDACTED]&machine=BSC</code></div>
+            <div class="info-row"><span class="info-label">کلید API (پنهان)</span><span class="info-value">••••••••••••••••••••••••••••••••</span></div>
+            <div class="info-row"><span class="info-label">ماشین</span><span class="info-value">خوشه امن</span></div>
+            <div class="endpoint"><span class="info-label">نقطه پایانی معیارها</span><br><code>https://beaconcha.in/api/v1/client/metrics?apikey=[REDACTED]&machine=secure-cluster</code></div>
+            <div class="security-warning">
+                <i class="fas fa-shield-alt"></i> <strong>نکته امنیتی:</strong> کلیدهای API هرگز نباید در کدهای سمت کاربر (Frontend) قرار داده شوند. 
+                در محیط تولید، تمام درخواست‌های حساس باید از طریق یک Backend واسط (مثلاً با استفاده از متغیرهای محیطی در فایل .env) انجام شوند.
+            </div>
         </div>
         <div class="card">
             <h3><i class="fas fa-shield-haltered"></i> حفاظت از داده (GDPR)</h3>
@@ -451,7 +464,8 @@ Capella: MAX_WITHDRAWALS_PER_PAYLOAD: 8</pre></details>
         <div class="stat-card"><div class="label">رویدادهای واریز</div><div class="value">۱</div></div>
     `;
 </script>
-</body><script>
+</body>
+<script>
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
       navigator.serviceWorker.register('/sw.js')
