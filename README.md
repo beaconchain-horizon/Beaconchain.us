@@ -18,7 +18,7 @@ In a global evaluation by a senior software architecture analyst (May 2026) amon
 
 - **World Rank #3** (overall score 9.2/10)
 - **Perfect Security Score (10/10)** – validated URL sanitisation, XSS prevention, security meta‑tags
-- **Unmatched in blockchain monitoring** – “For blockchain monitoring and high security, Beaconcha.in is unrivaled.”
+- **Unmatched in blockchain monitoring** – “For blockchain monitoring and high security, Beaconchain Horizon is unrivaled.”
 
 It stands alongside NVIDIA TensorRT‑LLM (#1) and Supabase (#2), surpassing Microsoft’s eShopOnContainers and it‑tools.
 
@@ -33,7 +33,7 @@ It stands alongside NVIDIA TensorRT‑LLM (#1) and Supabase (#2), surpassing Mic
 - **Full beacon chain API support** – Postman collection included
 - **GDPR compliant** – full EU data protection authority list, DPO contact
 - **Light & Dark theme** – follows system preference
-- **Open source (GPL‑3.0 with additional terms)** – transparent, community‑driven, with commercial use restriction
+- **Open source (GPL‑3.0)** – transparent, community‑driven
 
 ---
 
