@@ -2,16 +2,26 @@
 .env
 .env.local
 .env.*.local
+*.env
 
-# API keys and secrets
+# Secrets
 *.key
 *.pem
 *.p12
 secrets.json
+secret/
 
 # Logs
 *.log
+logs/
+
+# Dependencies
+node_modules/
 
 # OS files
 .DS_Store
 Thumbs.db
+
+# IDE
+.vscode/
+.idea/
