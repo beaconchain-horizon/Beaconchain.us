@@ -1,0 +1,10 @@
+# Beaconchain API
+VITE_BEACONCHAIN_API_KEY=your_real_api_key_here
+
+# Prefect Cloud
+PREFECT_USER_ID=your-real-user-id
+PREFECT_WORKER_ID=your-real-worker-id
+PREFECT_AUTOMATION_ID=your-real-automation-id
+
+# Contact
+CONTACT_EMAIL=your-real-email@example.com
