@@ -28,15 +28,15 @@
   "license": "GPL-3.0",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/beaconchain-com/Beaconchain.us.git"
+    "url": "git+https://github.com/beaconchain-us/Beaconchain.us.git"
   },
   "bugs": {
-    "url": "https://github.com/beaconchain-com/Beaconchain.us/issues"
+    "url": "https://github.com/beaconchain-us/Beaconchain.us/issues"
   },
   "homepage": "https://beaconchain.us",
   "funding": {
     "type": "individual",
-    "url": "https://github.com/sponsors/beaconchain-com"
+    "url": "https://github.com/sponsors/beaconchain-us"
   },
   "devDependencies": {
     "@types/node": "^20.0.0"

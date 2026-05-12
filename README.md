@@ -43,6 +43,6 @@ It stands alongside NVIDIA TensorRT‑LLM (#1) and Supabase (#2), surpassing Mic
 To run locally:
 
 ```bash
-git clone https://github.com/beaconchain-com/Beaconchain.us.git
+git clone https://github.com/beaconchain-us/Beaconchain.us.git
 cd Beaconchain.us
 # simply open index.html in your browser
