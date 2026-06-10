@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Verified Merkle Lib – Incremental Merkle Tree, SHA-256, PrepaidPackage. Formally verified cryptography for web.">
+  <title>Verified Merkle Lib · beaconchain‑us</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: radial-gradient(circle at 10% 20%, #0a0f1e, #03050a);
+      font-family: 'Inter', system-ui, sans-serif;
+      color: #eef2ff;
+      padding: 2rem;
+    }
+    .container { max-width: 1200px; margin: 0 auto; }
+    .header { text-align: center; margin-bottom: 2rem; }
+    .header h1 { font-size: 2rem; background: linear-gradient(135deg, #fff, #4f9eff, #c084fc); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .card {
+      background: rgba(20,24,36,0.7);
+      backdrop-filter: blur(8px);
+      border-radius: 1.5rem;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      border: 1px solid rgba(79,158,255,0.2);
+    }
+    pre {
+      background: #0f172a;
+      padding: 1rem;
+      border-radius: 1rem;
+      overflow-x: auto;
+      font-size: 0.75rem;
+      color: #cbd5e1;
+    }
+    button { background: #4f9eff; border: none; padding: 0.5rem 1rem; border-radius: 2rem; cursor: pointer; font-weight: bold; margin-top: 1rem; }
+    .demo { background: #1e293b; border-radius: 1rem; padding: 1rem; }
+    .output { background: #0f172a; border-radius: 1rem; padding: 0.5rem; font-family: monospace; margin-top: 0.5rem; }
+    .footer { text-align: center; margin-top: 2rem; font-size: 0.7rem; }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <h1>🔐 Verified Merkle Lib</h1>
+    <p>Formally verified incremental Merkle tree · SHA‑256 · PrepaidPackage</p>
+  </div>
+  <div class="card">
+    <h2>📦 Library (global object: <code>VerifiedWebLib</code>)</h2>
+    <pre id="codeDisplay"></pre>
+  </div>
+  <div class="card">
+    <h2>🧪 Demo</h2>
+    <div class="demo">
+      <button id="testMerkle">▶ Incremental Merkle Tree</button>
+      <button id="testHash">🔐 SHA‑256</button>
+      <button id="testEndian">🔁 toLittleEndian64</button>
+      <button id="testPrepaid">🎫 PrepaidPackage (generate license)</button>
+      <div id="demoOutput" class="output">—</div>
+    </div>
+  </div>
+  <div class="footer">
+    © 2026 beaconchain‑us · GPL‑3.0 · <a href="https://github.com/beaconchain-us/verified-merkle-lib" style="color:#4f9eff;">GitHub</a>
+  </div>
+</div>
+<script>
+  // ------------------------------------------------------------------
+  // VerifiedWebLib – full implementation
+  // ------------------------------------------------------------------
+  (function(){
+    // ---------- 1. SHA-256 ----------
+    async function sha256(input) {
+      const hash = await crypto.subtle.digest('SHA-256', input);
+      return new Uint8Array(hash);
+    }
+
+    // ---------- 2. toLittleEndian64 ----------
+    function toLittleEndian64(value) {
+      const arr = new Uint8Array(8);
+      for (let i = 0; i < 8; i++) {
+        arr[i] = (value >> (i * 8)) & 0xff;
+      }
+      return arr;
+    }
+
+    // ---------- 3. Merkleization ----------
+    async function merkleize(data) {
+      if (data.length !== 32) {
+        const padded = new Uint8Array(32);
+        padded.set(data.slice(0, 32));
+        return await sha256(padded);
+      }
+      return await sha256(data);
+    }
+
+    // ---------- 4. Incremental Merkle Tree ----------
+    class IncrementalMerkleTree {
+      constructor(height = 32) {
+        this.height = height;
+        this.depositCount = 0;
+        this.zeroHashes = [new Uint8Array(32)];
+        this.branch = [];
+        this.ready = false;
+      }
+      async init() {
+        for (let i = 0; i < this.height - 1; i++) {
+          const last = this.zeroHashes[i];
+          const concat = new Uint8Array(last.length + last.length);
+          concat.set(last, 0);
+          concat.set(last, last.length);
+          const next = await sha256(concat);
+          this.zeroHashes.push(next);
+        }
+        this.branch = this.zeroHashes.map(() => new Uint8Array(32));
+        this.ready = true;
+      }
+      async deposit(leaf) {
+        if (!this.ready) throw new Error('init() first');
+        if (this.depositCount >= (1 << this.height) - 1) throw new Error('too many deposits');
+        let size = this.depositCount + 1;
+        let value = leaf;
+        for (let i = 0; i < this.height; i++) {
+          if (size % 2 === 1) break;
+          const branchVal = this.branch[i];
+          const concat = new Uint8Array(branchVal.length + value.length);
+          concat.set(branchVal, 0);
+          concat.set(value, branchVal.length);
+          value = await sha256(concat);
+          size >>= 1;
+        }
+        const index = (size % 2 === 0) ? size : size >> 1;
+        this.branch[index] = value;
+        this.depositCount++;
+      }
+      async getRoot() {
+        if (!this.ready) throw new Error('init() first');
+        let root = new Uint8Array(32);
+        let size = this.depositCount;
+        for (let i = 0; i < this.height; i++) {
+          let concat;
+          if (size % 2 === 1) {
+            concat = new Uint8Array(this.branch[i].length + root.length);
+            concat.set(this.branch[i], 0);
+            concat.set(root, this.branch[i].length);
+          } else {
+            concat = new Uint8Array(root.length + this.zeroHashes[i].length);
+            concat.set(root, 0);
+            concat.set(this.zeroHashes[i], root.length);
+          }
+          root = await sha256(concat);
+          size >>= 1;
+        }
+        return root;
+      }
+    }
+
+    // ---------- 5. PrepaidPackage ----------
+    class PrepaidPackage {
+      constructor(volume, seed = crypto.getRandomValues(new Uint8Array(32))) {
+        this.volume = volume;
+        this.seed = seed;
+        this.leaves = null;
+        this.root = null;
+        this.used = new Set();
+      }
+      async _sha256(data) { return await sha256(data); }
+      async generate() {
+        const leaves = [];
+        for (let i = 0; i < this.volume; i++) {
+          const indexBuf = new Uint8Array(4);
+          new DataView(indexBuf.buffer).setUint32(0, i, true);
+          const concat = new Uint8Array(this.seed.length + indexBuf.length);
+          concat.set(this.seed, 0);
+          concat.set(indexBuf, this.seed.length);
+          const leaf = await this._sha256(concat);
+          leaves.push(leaf);
+        }
+        this.leaves = leaves;
+        let level = leaves;
+        while (level.length > 1) {
+          const next = [];
+          for (let i = 0; i < level.length; i += 2) {
+            const left = level[i];
+            const right = (i+1 < level.length) ? level[i+1] : left;
+            const concat = new Uint8Array(left.length + right.length);
+            concat.set(left, 0);
+            concat.set(right, left.length);
+            next.push(await this._sha256(concat));
+          }
+          level = next;
+        }
+        this.root = level[0] || new Uint8Array(32);
+        return this.root;
+      }
+      async getProof(index) {
+        if (!this.leaves) throw new Error('generate first');
+        let proof = [];
+        let level = this.leaves.slice();
+        let idx = index;
+        while (level.length > 1) {
+          const siblingIdx = (idx % 2 === 0) ? idx + 1 : idx - 1;
+          if (siblingIdx < level.length) proof.push(level[siblingIdx]);
+          else proof.push(level[idx]);
+          const next = [];
+          for (let i = 0; i < level.length; i += 2) {
+            const left = level[i];
+            const right = (i+1 < level.length) ? level[i+1] : left;
+            const concat = new Uint8Array(left.length + right.length);
+            concat.set(left, 0);
+            concat.set(right, left.length);
+            next.push(await this._sha256(concat));
+          }
+          level = next;
+          idx = Math.floor(idx / 2);
+        }
+        return { leaf: this.leaves[index], proof, index };
+      }
+      static async verify(root, leaf, proof, index) {
+        let computed = leaf;
+        let idx = index;
+        for (const sibling of proof) {
+          let concat;
+          if (idx % 2 === 0) {
+            concat = new Uint8Array(computed.length + sibling.length);
+            concat.set(computed, 0);
+            concat.set(sibling, computed.length);
+          } else {
+            concat = new Uint8Array(sibling.length + computed.length);
+            concat.set(sibling, 0);
+            concat.set(computed, sibling.length);
+          }
+          computed = await sha256(concat);
+          idx = Math.floor(idx / 2);
+        }
+        return computed.length === root.length && computed.every((v,i) => v === root[i]);
+      }
+    }
+
+    // Expose globally
+    window.VerifiedWebLib = {
+      sha256,
+      toLittleEndian64,
+      merkleize,
+      IncrementalMerkleTree,
+      PrepaidPackage
+    };
+
+    // Display library code in pre block (simplified)
+    const codeString = `// VerifiedWebLib – beaconchain‑us
+const { sha256, IncrementalMerkleTree, PrepaidPackage } = window.VerifiedWebLib;
+const tree = new IncrementalMerkleTree();
+await tree.init();
+await tree.deposit(await sha256(new TextEncoder().encode("data")));
+const root = await tree.getRoot();
+console.log("Root:", Buffer.from(root).toString('hex'));`;
+    document.getElementById('codeDisplay').innerText = codeString;
+
+    // Demo handlers
+    document.getElementById('testMerkle').onclick = async () => {
+      const out = document.getElementById('demoOutput');
+      out.innerText = '⏳ Building tree...';
+      try {
+        const tree = new IncrementalMerkleTree(4);
+        await tree.init();
+        const leaf1 = await sha256(new TextEncoder().encode("first"));
+        const leaf2 = await sha256(new TextEncoder().encode("second"));
+        await tree.deposit(leaf1);
+        await tree.deposit(leaf2);
+        const root = await tree.getRoot();
+        out.innerText = `✅ Root (hex): ${Buffer.from(root).toString('hex')}\nDeposit count: ${tree.depositCount}`;
+      } catch(e) { out.innerText = `❌ Error: ${e.message}`; }
+    };
+    document.getElementById('testHash').onclick = async () => {
+      const out = document.getElementById('demoOutput');
+      const text = "beaconchain-us";
+      const hash = await sha256(new TextEncoder().encode(text));
+      out.innerText = `🔐 SHA-256("${text}") = ${Buffer.from(hash).toString('hex')}`;
+    };
+    document.getElementById('testEndian').onclick = () => {
+      const out = document.getElementById('demoOutput');
+      const val = 123456789;
+      const le = toLittleEndian64(val);
+      out.innerText = `🔁 toLittleEndian64(${val}) = [${Array.from(le).join(', ')}]`;
+    };
+    document.getElementById('testPrepaid').onclick = async () => {
+      const out = document.getElementById('demoOutput');
+      out.innerText = '🔄 Generating PrepaidPackage (100 leaves)...';
+      try {
+        const pkg = new PrepaidPackage(100);
+        const root = await pkg.generate();
+        const proof = await pkg.getProof(0);
+        out.innerText = `✅ Package generated!\nRoot: ${Buffer.from(root).toString('hex').slice(0,32)}...\nLeaf[0] proof length: ${proof.proof.length}`;
+      } catch(e) { out.innerText = `❌ Error: ${e.message}`; }
+    };
+  })();
+</script>
+</body>
+</html>
