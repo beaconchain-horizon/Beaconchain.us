@@ -6,13 +6,13 @@
     <meta name="description" content="Beaconchain Horizon - World #3 Blockchain Monitoring | 100K Validators | Security 10/10">
     <meta name="theme-color" content="#0a0f1e">
     <meta name="author" content="Mahdi Amolimoghaddam">
-    <!-- CSP امن بدون unsafe-inline برای script‌ها -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdnjs.cloudflare.com 'nonce-EDNnf03nceIOfn39fn3e9xh3'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; connect-src 'self'; img-src 'self' data: https:; frame-src 'none';">
+    <!-- simplified CSP for static hosting (no nonce required) -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdnjs.cloudflare.com 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; connect-src 'self'; img-src 'self' data: https:; frame-src 'none';">
     <title>Beaconchain Horizon | World #3 | 100K Validators | Offline‑Ready</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="manifest" href="manifest.json">
-    <style nonce="EDNnf03nceIOfn39fn3e9xh3">
+    <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             background: radial-gradient(circle at 10% 20%, #0a0f1e, #05070f);
@@ -123,7 +123,7 @@
         </div>
     </div>
 
-    <!-- Correct Ranking Section (Blockchain only) -->
+    <!-- Ranking Section -->
     <div class="grid-3col">
         <div class="card">
             <h3><i class="fas fa-medal"></i> Blockchain Monitor Ranking (May 2026)</h3>
@@ -232,7 +232,7 @@
             <div id="validatorList"></div>
         </div>
         <div class="security-note">
-            <i class="fas fa-shield-alt"></i> <strong>Security Hardening:</strong> No hardcoded secrets. CSP uses nonce (no unsafe-inline for scripts). All sensitive credentials must be stored in environment variables (.env). GDPR compliant | XSS protected.
+            <i class="fas fa-shield-alt"></i> <strong>Security Hardening:</strong> No hardcoded secrets. CSP with strict rules. All sensitive credentials must be stored in environment variables (.env). GDPR compliant | XSS protected.
         </div>
     </div>
 
@@ -293,19 +293,18 @@
         </div>
     </div>
 
-    <!-- Footer -->
+    <!-- Footer (cleaned: no app store links, no broken GitLab, added PWA/APK info) -->
     <div class="footer-big">
         <div class="footer-section">
-            <h4><i class="fas fa-mobile-alt"></i> Mobile App (Coming Soon)</h4>
-            <a href="#" onclick="return false;" style="opacity:0.7;"><i class="fab fa-apple"></i> iOS – Soon</a><br>
-            <a href="#" onclick="return false;" style="opacity:0.7;"><i class="fab fa-google-play"></i> Android – Soon</a><br>
-            <a href="https://beaconchain.us/dashboard" target="_blank">Web Dashboard</a>
+            <h4><i class="fas fa-mobile-alt"></i> Install Horizon</h4>
+            <p style="font-size:0.7rem;">📱 <strong>PWA (recommended):</strong> Open in Chrome/Safari → tap "Add to Home Screen".<br>
+            ⬇️ <strong>Direct APK:</strong> <a href="/download/app-release.apk" style="color:#4f9eff;">Download Android APK</a> (enable "unknown sources")</p>
         </div>
         <div class="footer-section">
             <h4><i class="fas fa-code-branch"></i> Code Repositories</h4>
-            <a href="https://github.com/beaconchain-us/beaconcha.in" target="_blank">Frontend (Web/Mobile)</a><br>
-            <a href="https://github.com/beaconchain-us/eth2-beaconchain-explorer" target="_blank">Backend Explorer</a><br>
-            <a href="https://gitlab.com/beaconchain-us1/Beaconchain.com" target="_blank">GitLab Mirror</a>
+            <a href="https://github.com/beaconchain-us/Beaconchain.us" target="_blank">Horizon Web App</a><br>
+            <a href="https://github.com/beaconchain-us/eth2-beaconchain-explorer" target="_blank">Backend Explorer (Go)</a><br>
+            <a href="https://github.com/beaconchain-us/verified-merkle-lib" target="_blank">Verified Merkle Lib</a>
         </div>
         <div class="footer-section">
             <h4><i class="fas fa-envelope"></i> Contact & Legal</h4>
@@ -315,7 +314,7 @@
             <div class="ownership-note">
                 © 2025–2026 Mahdi Amolimoghaddam – All rights reserved.<br>
                 Licensed under GPL-3.0 with additional terms (attribution, non‑commercial use without permission, share‑alike).<br>
-                This dashboard contains real validator income data from beaconcha.in.
+                All data is served by our own Horizon API – independent and formally verified.
             </div>
         </div>
     </div>
@@ -333,7 +332,7 @@
     </div>
 </div>
 
-<script nonce="EDNnf03nceIOfn39fn3e9xh3">
+<script>
     // ==================== CONFIGURATION ====================
     const TOTAL_VALIDATORS = 100000;
     const VISIBLE_COUNT = 200;
@@ -342,7 +341,6 @@
     let currentStart = 0;
     let cacheStats = { hits: 0, misses: 0, loadTime: 0 };
 
-    // DOM Elements
     const container = document.getElementById('validatorContainer');
     const listElement = document.getElementById('validatorList');
     const searchInput = document.getElementById('searchInput');
