@@ -1,334 +1,202 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <meta name="description" content="Horizon – Sovereign Validator Dashboard | Live from validators.json | Offline‑first | 10/10 Security">
-  <meta name="theme-color" content="#0a0f1e">
-  <meta name="author" content="Mahdi Amolimoghaddam">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdnjs.cloudflare.com 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; connect-src 'self' https://api.coingecko.com; img-src 'self' data: https:; frame-src 'none';">
-  <title>Horizon · Sovereign Dashboard</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="manifest" href="manifest.json">
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-
-    body {
-      background: radial-gradient(ellipse at 20% 30%, #0a0c18, #010104);
-      font-family: 'Inter', system-ui, 'Segoe UI', sans-serif;
-      color: #eef2ff;
-      padding: 1.5rem;
-      line-height: 1.5;
+{
+  "owner": "Mahdi Amolimoghaddam",
+  "totalValidators": 24,
+  "totalIncomeETH": 116.9767,
+  "totalBalanceETH": 881.3787,
+  "totalBlocksProposed": 56998,
+  "lastUpdated": "2026-06-14T12:00:00Z",
+  "validators": [
+    {
+      "index": 0,
+      "publicKey": "0x933ad9....2ba58c95",
+      "currentBalance": 32.9402,
+      "effectiveBalance": 32.0,
+      "activationEpoch": "Dec-01-2020",
+      "income": { "1d": 0.0020, "7d": -0.0240, "14d": 0.0040, "30d": -4.6108, "total": 0.9402 }
+    },
+    {
+      "index": 14,
+      "publicKey": "0xab7a5a....283047b3",
+      "currentBalance": 39.5818,
+      "effectiveBalance": 32.0,
+      "activationEpoch": "Dec-01-2020",
+      "income": { "1d": 0.0020, "7d": 0.0218, "14d": 0.0701, "30d": 0.1152, "total": 7.5818 }
+    },
+    {
+      "index": 15,
+      "publicKey": "0x980c0c....4b5ed6df",
+      "currentBalance": 39.2876,
+      "effectiveBalance": 32.0,
+      "activationEpoch": "Dec-01-2020",
+      "income": { "1d": 0.0020, "7d": 0.0218, "14d": 0.0417, "30d": 0.0867, "total": 7.2876 }
+    },
+    {
+      "index": 16,
+      "publicKey": "0xac7cbd....7861d0c3",
+      "currentBalance": 39.0746,
+      "effectiveBalance": 32.0,
+      "activationEpoch": "Dec-01-2020",
+      "income": { "1d": 0.0020, "7d": 0.0218, "14d": 0.0417, "30d": 0.0866, "total": 7.0746 }
+    },
+    {
+      "index": 17,
+      "publicKey": "0x98ea28....f452d68c",
+      "currentBalance": 39.7026,
+      "effectiveBalance": 32.0,
+      "activationEpoch": "Dec-01-2020",
+      "income": { "1d": 0.0020, "7d": 0.0219, "14d": 0.0416, "30d": 0.0867, "total": 7.7026 }
+    },
+    {
+      "index": 18,
+      "publicKey": "0x92451d....323f492c",
+      "currentBalance": 39.2432,
+      "effectiveBalance": 32.0,
+      "activationEpoch": "Dec-01-2020",
+      "income": { "1d": 0.0020, "7d": 0.0552, "14d": 0.0751, "30d": 0.1201, "total": 7.2432 }
+    },
+    {
+      "index": 21,
+      "publicKey": "0xb49e08....14a71e04",
+      "currentBalance": 39.7918,
+      "effectiveBalance": 32.0,
+      "activationEpoch": "Dec-01-2020",
+      "income": { "1d": 0.0020, "7d": 0.0219, "14d": 0.0416, "30d": 0.0867, "total": 7.7918 }
+    },
+    {
+      "index": 25,
+      "publicKey": "0xaf4aa6....ac9b8975",
+      "currentBalance": 38.9027,
+      "effectiveBalance": 32.0,
+      "activationEpoch": "Dec-01-2020",
+      "income": { "1d": 0.0020, "7d": 0.0218, "14d": 0.0418, "30d": 0.0868, "total": 6.9027 }
+    },
+    {
+      "index": 27,
+      "publicKey": "0x8bddb1....c521ca40",
+      "currentBalance": 38.9816,
+      "effectiveBalance": 32.0,
+      "activationEpoch": "Dec-01-2020",
+      "income": { "1d": 0.0020, "7d": 0.0219, "14d": 0.0418, "30d": 0.0869, "total": 6.9816 }
+    },
+    {
+      "index": 30,
+      "publicKey": "0xb7f82f....fb7a6ce4",
+      "currentBalance": 39.4416,
+      "effectiveBalance": 32.0,
+      "activationEpoch": "Dec-01-2020",
+      "income": { "1d": 0.0020, "7d": 0.0219, "14d": 0.0418, "30d": 0.0868, "total": 7.4416 }
+    },
+    {
+      "index": 33,
+      "publicKey": "0xace735....033907a1",
+      "currentBalance": 39.1698,
+      "effectiveBalance": 32.0,
+      "activationEpoch": "Dec-01-2020",
+      "income": { "1d": 0.0354, "7d": 0.0553, "14d": 0.0752, "30d": 0.1202, "total": 7.1698 }
+    },
+    {
+      "index": 370,
+      "publicKey": "0xa8f70b....1573fd14",
+      "currentBalance": 39.0208,
+      "effectiveBalance": 32.0,
+      "activationEpoch": "Dec-01-2020",
+      "income": { "1d": 0.0020, "7d": 0.0219, "14d": 0.0418, "30d": 0.0869, "total": 7.0208 }
+    },
+    {
+      "index": 372,
+      "publicKey": "0x8ddb18....1caf1e2b",
+      "currentBalance": 39.3007,
+      "effectiveBalance": 32.0,
+      "activationEpoch": "Dec-01-2020",
+      "income": { "1d": 0.0020, "7d": 0.0219, "14d": 0.0751, "30d": 0.1532, "total": 7.3007 }
+    },
+    {
+      "index": 378,
+      "publicKey": "0x913a52....18c81b04",
+      "currentBalance": 38.8698,
+      "effectiveBalance": 32.0,
+      "activationEpoch": "Dec-01-2020",
+      "income": { "1d": 0.0020, "7d": 0.0219, "14d": 0.0417, "30d": 0.0868, "total": 6.8698 }
+    },
+    {
+      "index": 379,
+      "publicKey": "0xb869bf....2e2d0245",
+      "currentBalance": 39.1721,
+      "effectiveBalance": 32.0,
+      "activationEpoch": "Dec-01-2020",
+      "income": { "1d": 0.0020, "7d": 0.0218, "14d": 0.0418, "30d": 0.0868, "total": 7.1721 }
+    },
+    {
+      "index": 380,
+      "publicKey": "0xa0316a....d2032d5c",
+      "currentBalance": 39.2818,
+      "effectiveBalance": 32.0,
+      "activationEpoch": "Dec-01-2020",
+      "income": { "1d": 0.0020, "7d": 0.0218, "14d": 0.0417, "30d": 0.0867, "total": 7.2818 }
+    },
+    {
+      "index": 405,
+      "publicKey": "0xaf242c....c8fda731",
+      "currentBalance": 39.1921,
+      "effectiveBalance": 32.0,
+      "activationEpoch": "Dec-01-2020",
+      "income": { "1d": 0.0354, "7d": 0.0553, "14d": 0.0753, "30d": 0.1204, "total": 7.1921 }
+    },
+    {
+      "index": 7031,
+      "publicKey": "0x8b84c0....08c44622",
+      "currentBalance": 32.0014,
+      "effectiveBalance": 32.0,
+      "activationEpoch": "Dec-01-2020",
+      "income": { "1d": 0.0020, "7d": 0.0092, "14d": 0.0041, "30d": -4.5718, "total": 0.0014 }
+    },
+    {
+      "index": 9018,
+      "publicKey": "0x8ff55c....fe030595",
+      "currentBalance": 32.0014,
+      "effectiveBalance": 32.0,
+      "activationEpoch": "Dec-01-2020",
+      "income": { "1d": 0.0020, "7d": 0.0092, "14d": 0.0040, "30d": -4.6496, "total": 0.0014 }
+    },
+    {
+      "index": 9104,
+      "publicKey": "0x8002f3....0115e8b9",
+      "currentBalance": 32.0014,
+      "effectiveBalance": 32.0,
+      "activationEpoch": "Dec-01-2020",
+      "income": { "1d": 0.0020, "7d": 0.0219, "14d": 0.0751, "30d": 0.1201, "total": 0.0014 }
+    },
+    {
+      "index": 13215,
+      "publicKey": "0x93d784....c5506306",
+      "currentBalance": 32.0013,
+      "effectiveBalance": 32.0,
+      "activationEpoch": "Dec-01-2020",
+      "income": { "1d": 0.0020, "7d": 0.0092, "14d": 0.0040, "30d": -4.6068, "total": 0.0013 }
+    },
+    {
+      "index": 29149,
+      "publicKey": "0x96662b....66ceadf7",
+      "currentBalance": 32.0013,
+      "effectiveBalance": 32.0,
+      "activationEpoch": "Dec-10-2020",
+      "income": { "1d": 0.0020, "7d": 0.0093, "14d": 0.0040, "30d": -4.4360, "total": 0.0013 }
+    },
+    {
+      "index": 319062,
+      "publicKey": "0xb9f2a8....d4e15316",
+      "currentBalance": 32.0007,
+      "effectiveBalance": 32.0,
+      "activationEpoch": "Mar-21-2022",
+      "income": { "1d": 0.0020, "7d": -0.0030, "14d": 0.0044, "30d": -1.3858, "total": 0.0007 }
+    },
+    {
+      "index": 563462,
+      "publicKey": "0xaaeb6f....12924f4b",
+      "currentBalance": 32.0144,
+      "effectiveBalance": 32.0,
+      "activationEpoch": "Apr-04-2023",
+      "income": { "1d": -0.0105, "7d": -0.0031, "14d": -0.0079, "30d": -0.0171, "total": 0.0144 }
     }
-
-    .container { max-width: 1600px; margin: 0 auto; }
-
-    /* glass card */
-    .glass-card {
-      background: rgba(15, 23, 42, 0.55);
-      backdrop-filter: blur(12px) saturate(180%);
-      border-radius: 2rem;
-      border: 1px solid rgba(79, 158, 255, 0.25);
-      transition: all 0.3s ease;
-      box-shadow: 0 15px 35px -12px rgba(0,0,0,0.4);
-    }
-    .glass-card:hover {
-      border-color: #c084fc;
-      background: rgba(28, 36, 56, 0.7);
-      transform: translateY(-2px);
-    }
-
-    /* hero brand with large telescope */
-    .hero-brand {
-      text-align: center;
-      margin-bottom: 2rem;
-    }
-    .telescope-icon {
-      font-size: 5.2rem;
-      filter: drop-shadow(0 0 14px #4f9eff);
-      margin-bottom: 0.5rem;
-      animation: floatIcon 3s infinite ease-in-out;
-    }
-    @keyframes floatIcon {
-      0% { transform: translateY(0px); }
-      50% { transform: translateY(-10px); }
-      100% { transform: translateY(0px); }
-    }
-    .hero-brand h1 {
-      font-size: 3.5rem;
-      background: linear-gradient(135deg, #fff, #4f9eff, #c084fc);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      letter-spacing: -0.02em;
-    }
-    .hero-brand p {
-      font-size: 1.1rem;
-      color: #bfd6ff;
-    }
-
-    .badge-strip {
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
-      flex-wrap: wrap;
-      margin-top: 1.5rem;
-    }
-    .pill {
-      background: rgba(79,158,255,0.15);
-      border: 1px solid #4f9eff55;
-      padding: 0.4rem 1.2rem;
-      border-radius: 60px;
-      font-size: 0.8rem;
-      font-weight: 500;
-    }
-
-    .grid-stats {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 1.5rem;
-      margin-bottom: 2rem;
-    }
-    .stat-card {
-      padding: 1.2rem;
-      text-align: center;
-    }
-    .stat-number {
-      font-size: 2.2rem;
-      font-weight: 800;
-      color: #c084fc;
-    }
-    .stat-label {
-      font-size: 0.7rem;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-
-    .validator-table-wrapper {
-      overflow-x: auto;
-    }
-    .validator-table {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 0.75rem;
-    }
-    .validator-table th, .validator-table td {
-      padding: 0.7rem 0.5rem;
-      text-align: left;
-      border-bottom: 1px solid rgba(255,255,255,0.08);
-    }
-    .validator-table th {
-      background: rgba(0,0,0,0.3);
-      color: #a5b4fc;
-      font-weight: 600;
-    }
-    .validator-table tr:hover {
-      background: rgba(79,158,255,0.1);
-    }
-
-    .footer {
-      margin-top: 2.5rem;
-      padding: 1.5rem;
-      text-align: center;
-      font-size: 0.7rem;
-      color: #9aaedf;
-      border-top: 1px solid #2d3a5e;
-    }
-    button {
-      background: #2b3550;
-      border: none;
-      padding: 0.4rem 1rem;
-      border-radius: 2rem;
-      color: white;
-      cursor: pointer;
-      transition: 0.2s;
-    }
-    button:hover {
-      background: #4f9eff;
-      transform: translateY(-2px);
-    }
-    ::-webkit-scrollbar { width: 5px; }
-    ::-webkit-scrollbar-track { background: #141c2c; }
-    ::-webkit-scrollbar-thumb { background: #4f9eff; border-radius: 10px; }
-  </style>
-</head>
-<body>
-<div class="container">
-  <!-- Hero: large telescope + Horizon brand -->
-  <div class="hero-brand">
-    <div class="telescope-icon">🔭</div>
-    <h1>Horizon</h1>
-    <p>Sovereign · Offline‑First · 10/10 Security</p>
-    <div class="badge-strip">
-      <div class="pill"><i class="fab fa-ethereum"></i> ETH: <span id="ethPrice">–</span></div>
-      <div class="pill"><i class="fas fa-chart-line"></i> Blocks proposed: <span id="totalBlocksHeader">0</span></div>
-      <div class="pill"><i class="fas fa-shield-alt"></i> Perfect Security Score</div>
-      <div class="pill"><i class="fas fa-database"></i> Offline cache</div>
-    </div>
-  </div>
-
-  <!-- Key metrics (loaded from validators.json) -->
-  <div class="grid-stats">
-    <div class="glass-card stat-card">
-      <div class="stat-number" id="totalValidators">0</div>
-      <div class="stat-label">Validators managed</div>
-    </div>
-    <div class="glass-card stat-card">
-      <div class="stat-number" id="totalIncome">0</div>
-      <div class="stat-label">Total income (ETH)</div>
-    </div>
-    <div class="glass-card stat-card">
-      <div class="stat-number" id="totalBalance">0</div>
-      <div class="stat-label">Total balance (ETH)</div>
-    </div>
-    <div class="glass-card stat-card">
-      <div class="stat-number" id="totalBlocks">0</div>
-      <div class="stat-label">Blocks proposed</div>
-    </div>
-  </div>
-
-  <!-- Validator table (populated from JSON) -->
-  <div class="glass-card" style="padding: 1.5rem;">
-    <h3 style="margin-bottom: 1rem;"><i class="fas fa-table-list"></i> Validator performance (loaded from validators.json)</h3>
-    <div class="validator-table-wrapper">
-      <table class="validator-table" id="validatorTable">
-        <thead>
-          <tr><th>Index</th><th>Public Key (short)</th><th>Curr Balance (ETH)</th><th>Eff Balance</th><th>Activation</th><th>1d income</th><th>7d income</th><th>14d income</th><th>30d income</th><th>Overall income</th></tr>
-        </thead>
-        <tbody id="validatorTableBody">
-          <tr><td colspan="10" style="text-align:center;">Loading data from validators.json...</td></tr>
-        </tbody>
-      </table>
-    </div>
-    <div style="margin-top: 1rem; text-align: right; font-size:0.7rem;">
-      <button id="refreshBtn">⟳ Refresh (reload JSON)</button>
-    </div>
-  </div>
-
-  <!-- API monetization + wallet + digital signature -->
-  <div class="grid-stats">
-    <div class="glass-card" style="padding:1.2rem;">
-      <h3><i class="fas fa-coins"></i> Prepaid API</h3>
-      <p>Volume‑based Merkle licenses</p>
-      <div style="background:#0b0e1a; border-radius:1rem; padding:0.5rem; margin:0.5rem 0; font-family:monospace; font-size:0.7rem; word-break:break-all;">
-        0x4E94F10F0a34a0DF229e68d5902644046258D678
-      </div>
-      <div>Basic 0.05 ETH/m | Pro 0.2 ETH/m | Enterprise 0.5 ETH/m</div>
-      <button id="donateBtn" style="margin-top:0.5rem;">💎 Support</button>
-    </div>
-    <div class="glass-card" style="padding:1.2rem;">
-      <h3><i class="fas fa-user-astronaut"></i> Mahdi Amolimoghaddam</h3>
-      <p>Founder & maintainer – independent open‑source ecosystem</p>
-      <button id="collabBtn">🌍 Open for collab</button>
-    </div>
-    <div class="glass-card" style="padding:1.2rem;">
-      <h3><i class="fas fa-fingerprint"></i> Digital Signature</h3>
-      <p>Page fingerprint (SHA‑256):</p>
-      <code id="pageHash" style="font-size:0.7rem; word-break:break-all;">—</code>
-      <div style="margin-top:0.5rem;"><span id="statusIndicator" class="pill"><i class="fas fa-wifi"></i> Online</span></div>
-    </div>
-  </div>
-
-  <div class="footer">
-    <i class="fas fa-globe"></i> Independent · Built from Mashhad, Iran · GPL‑3.0<br>
-    <a href="https://beaconchain.us" style="color:#a5b4fc;">beaconchain.us</a> | <a href="https://github.com/beaconchain-us" style="color:#a5b4fc;">GitHub</a> | <a href="mailto:beaconchain@beaconchain.us">contact</a>
-  </div>
-</div>
-
-<script>
-  // ========== LOAD VALIDATOR DATA FROM validators.json ==========
-  async function loadValidatorData() {
-    try {
-      const response = await fetch('validators.json');
-      if (!response.ok) throw new Error(`HTTP ${response.status}`);
-      const data = await response.json();
-      return data;
-    } catch (error) {
-      console.error('Failed to load validators.json:', error);
-      return null;
-    }
-  }
-
-  async function renderDashboard() {
-    const data = await loadValidatorData();
-    if (!data) {
-      document.getElementById('validatorTableBody').innerHTML = '<tr><td colspan="10" style="text-align:center;">⚠️ Failed to load validators.json. Make sure the file exists in the same directory.</td></tr>';
-      return;
-    }
-    const validators = data.validators;
-    const summary = data;
-
-    document.getElementById('totalValidators').innerText = validators.length;
-    document.getElementById('totalIncome').innerText = (summary.totalIncomeETH || 0).toFixed(4) + ' ETH';
-    document.getElementById('totalBalance').innerText = (summary.totalBalanceETH || 0).toFixed(4) + ' ETH';
-    document.getElementById('totalBlocks').innerText = summary.totalBlocksProposed || 0;
-    document.getElementById('totalBlocksHeader').innerText = summary.totalBlocksProposed || 0;
-
-    const tbody = document.getElementById('validatorTableBody');
-    tbody.innerHTML = '';
-    for (const v of validators) {
-      const row = tbody.insertRow();
-      row.insertCell(0).innerText = v.index;
-      row.insertCell(1).innerText = v.publicKey || v.pubkey;
-      row.insertCell(2).innerText = (v.currentBalance || 0).toFixed(4);
-      row.insertCell(3).innerText = (v.effectiveBalance || 0).toFixed(4);
-      row.insertCell(4).innerText = v.activationEpoch || '-';
-      const inc = v.income || {};
-      row.insertCell(5).innerText = (inc['1d'] || 0).toFixed(4);
-      row.insertCell(6).innerText = (inc['7d'] || 0).toFixed(4);
-      row.insertCell(7).innerText = (inc['14d'] || 0).toFixed(4);
-      row.insertCell(8).innerText = (inc['30d'] || 0).toFixed(4);
-      row.insertCell(9).innerText = (inc.total || 0).toFixed(4);
-    }
-  }
-
-  // Ethereum price (live)
-  async function fetchEthPrice() {
-    try {
-      const res = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=ethereum&vs_currencies=usd');
-      const data = await res.json();
-      document.getElementById('ethPrice').innerText = `$${data.ethereum.usd.toLocaleString()}`;
-    } catch(e) { document.getElementById('ethPrice').innerText = '~$3,400'; }
-  }
-
-  // Page SHA‑256 signature
-  async function computePageHash() {
-    const content = document.body.innerText.slice(0, 8000);
-    const enc = new TextEncoder().encode(content);
-    const hash = await crypto.subtle.digest('SHA-256', enc);
-    const hex = Array.from(new Uint8Array(hash)).map(b=>b.toString(16).padStart(2,'0')).join('');
-    document.getElementById('pageHash').innerText = hex.slice(0, 48) + '…';
-  }
-
-  function updateOnlineStatus() {
-    const el = document.getElementById('statusIndicator');
-    if (navigator.onLine) {
-      el.innerHTML = '<i class="fas fa-wifi"></i> Online';
-      el.style.background = 'rgba(74,222,128,0.2)';
-    } else {
-      el.innerHTML = '<i class="fas fa-wifi-slash"></i> Offline (cached)';
-      el.style.background = 'rgba(250,204,21,0.2)';
-    }
-  }
-
-  window.addEventListener('load', () => {
-    renderDashboard();
-    fetchEthPrice();
-    setInterval(fetchEthPrice, 60000);
-    computePageHash();
-    updateOnlineStatus();
-    window.addEventListener('online', updateOnlineStatus);
-    window.addEventListener('offline', updateOnlineStatus);
-    document.getElementById('refreshBtn').addEventListener('click', () => {
-      renderDashboard();
-    });
-    document.getElementById('collabBtn').addEventListener('click', () => alert('📧 Email: beaconchain@beaconchain.us'));
-    document.getElementById('donateBtn').addEventListener('click', () => {
-      navigator.clipboard.writeText('0x4E94F10F0a34a0DF229e68d5902644046258D678');
-      alert('Wallet address copied!');
-    });
-  });
-</script>
-</body>
-</html>
+  ]
+}
