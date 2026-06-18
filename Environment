@@ -1,0 +1,2 @@
+git add Beaconchain-Environment.postman_environment.json
+git commit -m "Add Postman environment file"
