@@ -1,0 +1,2 @@
+git add Beaconchain-API.postman_collection.json
+git commit -m "Add Postman collection"
