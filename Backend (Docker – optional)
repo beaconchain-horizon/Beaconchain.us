@@ -1,2 +1,37 @@
-docker pull gobitfly/eth2-beaconchain-explorer
-docker run -p 3500:3500 gobitfly/eth2-beaconchain-explorer
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:15
+    container_name: beaconchain-db
+    environment:
+      POSTGRES_USER: beaconchain
+      POSTGRES_PASSWORD: your_strong_password
+      POSTGRES_DB: beaconchain
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    restart: unless-stopped
+
+  explorer:
+    image: gobitfly/eth2-beaconchain-explorer:latest
+    container_name: beaconchain-explorer
+    depends_on:
+      - postgres
+    ports:
+      - "3500:3500"
+    environment:
+      - POSTGRES_HOST=postgres
+      - POSTGRES_PORT=5432
+      - POSTGRES_USER=beaconchain
+      - POSTGRES_PASSWORD=your_strong_password
+      - POSTGRES_DB=beaconchain
+      - CHAIN_NAME=mainnet
+      - ETH2_CONFIG=http://your-beacon-node:3500  # آدرس node بیکن خودتان
+      - WEB_PORT=3500
+      - ENABLE_EXPLORER=true
+    restart: unless-stopped
+
+volumes:
+  postgres-data:
