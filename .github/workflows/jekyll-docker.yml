@@ -1,0 +1,47 @@
+# Horizon Core Engine – Beaconchain Official Wiki
+
+**Offline‑first, API‑based blockchain validator and license manager.**  
+Built with **Go**, **SQLite**, **Merkle trees**, and **ECDSA signatures**.
+
+Horizon is an open‑source, security‑hardened blockchain monitoring platform that powers a volume‑based prepaid API model using provable Merkle trees. This wiki provides comprehensive documentation for developers, contributors, and enterprise users.
+
+---
+
+## 🌐 Project Overview
+
+| Item | Details |
+|------|---------|
+| **Project Name** | Horizon Core Engine |
+| **Repository** | [github.com/beaconchain-horizon/horizon-core-engine](https://github.com/beaconchain-horizon/horizon-core-engine) |
+| **Primary Language** | Go 1.24+ |
+| **License** | GPL-3.0 |
+| **Author** | Mahdi Amolimoghaddam |
+| **Organization** | [beaconchain-horizon](https://github.com/beaconchain-horizon) |
+| **Official Website** | [https://beaconchain.us](https://beaconchain.us) |
+
+---
+
+## 🏆 Global Recognition
+
+- **Ranked #3** among blockchain explorers worldwide (May 2026 evaluation)
+- **Perfect security score** of 10/10
+- Supports **100,000+ validators** simultaneously
+- **72ms average response time** for validator queries
+
+---
+
+## 🚀 Key Features
+
+- **REST API** for validator management (`/api/v1/validators`)
+- **Prepaid license generation** using Merkle tree (`/api/v1/license/generate`)
+- **ECDSA digital signatures** for license integrity and verification
+- **SQLite** local storage (offline‑ready, zero external dependencies)
+- **Environment configuration** via `.env` file
+- **Offline‑first architecture** with IndexedDB caching and virtual scrolling
+- **Security‑hardened** with CSP nonce, SHA‑256 signatures, and offline Merkle proofs
+- **Customer & payment management** (`/api/v1/customers`, `/api/v1/payments`)
+- **Live crypto prices** from CoinGecko (`/api/v1/prices`)
+
+---
+
+## 🏗️ Architecture
